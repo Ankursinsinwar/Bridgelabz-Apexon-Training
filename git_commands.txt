@@ -78,33 +78,27 @@
 ##########################################################################################################################################
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-GIT COMMANDS – EXTENDED CHEAT SHEET
-
-==============================
-REPOSITORY SETUP
-==============================
+GIT COMMANDS WITH EXAMPLE
+------------------------------------------------------------------------
 
 git init
 Initializes a new local Git repository.
 Example:
 git init
 
+
 git clone
 Creates a local copy of a remote repository.
 Example:
 git clone https://github.com/user/repo.git
-git clone https://github.com/user/repo.git my-folder
 
-
-==============================
-REMOTE MANAGEMENT
-==============================
 
 git remote
 Lists connected remote repositories.
 Example:
 git remote
 git remote -v
+
 
 git remote add
 Adds a remote repository.
@@ -116,10 +110,6 @@ Fetches changes from remote without merging.
 Example:
 git fetch origin
 
-
-==============================
-STAGING & COMMITTING
-==============================
 
 git status
 Shows current state of the repository.
@@ -136,13 +126,9 @@ git add src/
 git commit
 Commits staged changes.
 Example:
-git commit -m "Add login feature"
-git commit -am "Quick fix"
+git commit -m "Feat: Add login feature"
+git commit -am "Fix(Login): forgot password fix"
 
-
-==============================
-PUSH & PULL
-==============================
 
 git push
 Pushes commits to remote.
@@ -150,49 +136,46 @@ Example:
 git push origin main
 git push -u origin main
 
+
 git pull
 Fetches and merges changes.
 Example:
 git pull origin main
 
 
-==============================
-BRANCHING
-==============================
-
 git branch
 Lists or manages branches.
 Example:
 git branch
-git branch feature-auth
-git branch -d feature-auth
+git branch branch1
+git branch -d branch1
+
 
 git checkout
 Switch branches or restore files.
 Example:
-git checkout feature-auth
-git checkout -b new-feature
+git checkout branch1
+git checkout -b branch1
+
 
 git switch
 Modern alternative to checkout.
 Example:
 git switch main
-git switch -c new-feature
+git switch -c branch1
+
 
 git merge
 Merges branches.
 Example:
-git merge feature-auth
+git merge branch1
+
 
 git rebase
 Reapplies commits on top of another branch.
 Example:
 git rebase main
 
-
-==============================
-HISTORY & INSPECTION
-==============================
 
 git log
 Shows commit history.
@@ -201,26 +184,25 @@ git log
 git log --oneline
 git log --graph --all
 
+
 git diff
 Shows differences between commits or files.
 Example:
 git diff
 git diff HEAD~1
 
+
 git show
 Shows details of a commit.
 Example:
 git show commit_hash
+
 
 git blame
 Shows who modified each line.
 Example:
 git blame app.py
 
-
-==============================
-UNDO & RECOVERY
-==============================
 
 git stash
 Temporarily saves changes.
@@ -229,21 +211,19 @@ git stash
 git stash pop
 git stash list
 
+
 git reset
 Moves HEAD to previous commit.
 Example:
 git reset --soft HEAD~1
 git reset --hard HEAD~1
 
+
 git revert
 Creates a new commit that undoes a commit.
 Example:
 git revert commit_hash
 
-
-==============================
-TAGS & RELEASES
-==============================
 
 git tag
 Creates version tags.
@@ -253,15 +233,12 @@ git tag -a v1.1 -m "Stable release"
 git push origin v1.0
 
 
-==============================
-CONFIGURATION & UTILITIES
-==============================
-
 git config
 Sets Git configuration.
 Example:
 git config --global user.name "Your Name"
 git config --global user.email "email@example.com"
+
 
 git clean
 Removes untracked files.
@@ -269,39 +246,24 @@ Example:
 git clean -n
 git clean -f
 
+
 git cherry-pick
 Applies a specific commit from another branch.
 Example:
 git cherry-pick commit_hash
 
 
-==============================
-COMMON WORKFLOW
-==============================
-
-git clone repo
-git checkout -b feature
-git add .
-git commit -m "Add feature"
-git push origin feature
-git checkout main
-git pull
-git merge feature
-
-
-==============================
-ADVANCED & COLLABORATION COMMANDS
-==============================
-
 git fetch --all
 Fetches updates from all remotes.
 Example:
 git fetch --all
 
+
 git pull --rebase
 Pulls changes and rebases instead of merging.
 Example:
 git pull --rebase origin main
+
 
 git push --force-with-lease
 Safely force-pushes changes.
@@ -309,14 +271,11 @@ Example:
 git push --force-with-lease origin main
 
 
-==============================
-FILE & COMMIT MANAGEMENT
-==============================
-
 git mv
 Moves or renames a file and tracks it.
 Example:
 git mv old_name.py new_name.py
+
 
 git rm
 Removes files from Git tracking.
@@ -324,25 +283,24 @@ Example:
 git rm file.txt
 git rm --cached file.txt
 
+
 git commit --amend
 Edits the last commit.
 Example:
 git commit --amend -m "Updated commit message"
 
 
-==============================
-LOG FILTERING & SEARCH
-==============================
-
 git log --author
 Shows commits by a specific author.
 Example:
 git log --author="Ankur"
 
+
 git log --since
 Shows commits since a date.
 Example:
 git log --since="2 weeks ago"
+
 
 git grep
 Searches text in repository.
@@ -350,19 +308,17 @@ Example:
 git grep "TODO"
 
 
-==============================
-BRANCH & REPO CLEANUP
-==============================
-
 git branch -a
 Lists local and remote branches.
 Example:
 git branch -a
 
+
 git branch -m
 Renames a branch.
 Example:
 git branch -m old-name new-name
+
 
 git prune
 Removes stale remote-tracking branches.
@@ -370,44 +326,11 @@ Example:
 git remote prune origin
 
 
-==============================
-SUBMODULES
-==============================
-
 git submodule add
 Adds another repo inside a repo.
 Example:
 git submodule add https://github.com/user/lib.git
 
-git submodule update
-Updates submodules.
-Example:
-git submodule update --init --recursive
-
-
-==============================
-STASH ADVANCED
-==============================
-
-git stash save
-Saves stash with message.
-Example:
-git stash save "work in progress"
-
-git stash apply
-Applies stash without deleting it.
-Example:
-git stash apply stash@{0}
-
-git stash drop
-Deletes a stash.
-Example:
-git stash drop stash@{0}
-
-
-==============================
-REBASE ADVANCED
-==============================
 
 git rebase -i
 Interactive rebase.
@@ -421,41 +344,12 @@ squash → combine commits
 drop   → remove commit
 
 
-==============================
-REMOTE & NETWORK
-==============================
-
-git ls-remote
-Lists references in a remote repo.
-Example:
-git ls-remote origin
-
-git archive
-Creates archive from repo.
-Example:
-git archive --format=zip HEAD > project.zip
-
-
-==============================
-DEBUGGING & RECOVERY
-==============================
-
 git reflog
 Shows all HEAD movements.
 Example:
 git reflog
 
-git bisect
-Finds commit that introduced a bug.
-Example:
-git bisect start
-git bisect bad
-git bisect good commit_hash
 
-
-==============================
-SECURITY & SIGNING
-==============================
 
 git commit -S
 Signs commits with GPG.
@@ -463,27 +357,5 @@ Example:
 git commit -S -m "Secure commit"
 
 
-==============================
-WORKTREES
-==============================
-
-git worktree add
-Checks out multiple branches at once.
-Example:
-git worktree add ../feature-branch feature
-
-
-==============================
-ALIASING
-==============================
-
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.cm commit
-
-Usage:
-git st
-git co main
-git cm -m "Quick commit"
-
+Contenue.....
 
